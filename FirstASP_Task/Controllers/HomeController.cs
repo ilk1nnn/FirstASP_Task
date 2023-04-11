@@ -104,7 +104,10 @@ namespace FirstASP_Task.Controllers
             }
             else
             {
-                return Redirect($"/home/hotmeal/{id}");
+                List<HotMeal> list = new List<HotMeal>();
+                var data = GetHotMeals().FirstOrDefault(d => d.HotMealId == id);
+                list.Add(data);
+                return View(list);
             }
         }
 
@@ -113,45 +116,47 @@ namespace FirstASP_Task.Controllers
         {
             return hotMeals;
         }
-        public ViewResult Drink(int id = -1)
-        {
-            if (id == -1)
-            {
-                return View(GetDrinks());
-            }
-            else
-            {
-                var data = GetDrinks().FirstOrDefault(d => d.DrinkId == id);
-                return View(data);
-            }
-        }
-
-        public ViewResult HotMeal(int id = -1)
-        {
-            if (id == -1)
-            {
-                return View(GetHotMeals());
-            }
-            else
-            {
-                var data = GetHotMeals().FirstOrDefault(d => d.HotMealId == id);
-                return View(data);
-            }
-        }
 
 
-        public ViewResult FastFood(int id = -1)
-        {
-            if (id == -1)
-            {
-                return View(GetFastFoods());
-            }
-            else
-            {
-                var data = GetFastFoods().FirstOrDefault(d => d.FastFoodId == id);
-                return View(data);
-            }
-        }
+        //public ViewResult Drink(int id = -1)
+        //{
+        //    if (id == -1)
+        //    {
+        //        return View(GetDrinks());
+        //    }
+        //    else
+        //    {
+        //        var data = GetDrinks().FirstOrDefault(d => d.DrinkId == id);
+        //        return View(data);
+        //    }
+        //}
+
+        //public ViewResult HotMeal(int id = -1)
+        //{
+        //    if (id == -1)
+        //    {
+        //        return View(GetHotMeals());
+        //    }
+        //    else
+        //    {
+        //        var data = GetHotMeals().FirstOrDefault(d => d.HotMealId == id);
+        //        return View(data);
+        //    }
+        //}
+
+
+        //public ViewResult FastFood(int id = -1)
+        //{
+        //    if (id == -1)
+        //    {
+        //        return View(GetFastFoods());
+        //    }
+        //    else
+        //    {
+        //        var data = GetFastFoods().FirstOrDefault(d => d.FastFoodId == id);
+        //        return View(data);
+        //    }
+        //}
 
         public IActionResult Drinks(int id = -1)
         {
@@ -161,7 +166,10 @@ namespace FirstASP_Task.Controllers
             }
             else
             {
-                return Redirect($"/home/drink/{id}");
+                List<Drink> list = new List<Drink>();
+                var data = GetDrinks().FirstOrDefault(d => d.DrinkId == id);
+                list.Add(data);
+                return View(list);
             }
         }
 
@@ -179,7 +187,10 @@ namespace FirstASP_Task.Controllers
             }
             else
             {
-                return Redirect($"/home/fastfood/{id}");
+                List<FastFood> list = new List<FastFood>();
+                var data = GetFastFoods().FirstOrDefault(d => d.FastFoodId == id);
+                list.Add(data);
+                return View(list);
             }
         }
 
